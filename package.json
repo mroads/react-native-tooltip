@@ -38,7 +38,9 @@
     "type": "git",
     "url": "git+https://github.com/mroads/react-native-tooltip.git"
   },
-  "author": "Vijay",
+  "author": {
+    "name":"Vijay"
+  },
   "bugs": {
     "url": "https://github.com/mroads/react-native-tooltip/issues"
   },
