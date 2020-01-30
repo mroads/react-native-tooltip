@@ -4,6 +4,8 @@
 import React from 'react';
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import { store } from './Tooltip';
+import { clearTooltip } from '../actions/actions';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,15 +23,19 @@ const styles = StyleSheet.create({
 });
 
 export interface Props {
-  onPress: Function;
   toolTipContent: any;
 }
 
 
-function Overlay({ toolTipContent, onPress }:Props) {
+function dispatchClearTooltip() {
+  store.dispatch(clearTooltip());
+}
+
+
+function Overlay({ toolTipContent }:Props) {
   const { xCoordinate: x, yCoordinate: y, content } = toolTipContent || {};
   return toolTipContent ? (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity style={styles.container} onPress={dispatchClearTooltip}>
       <View style={[styles.innerContainer, { top: y, left: x }]}>
         {content}
       </View>
