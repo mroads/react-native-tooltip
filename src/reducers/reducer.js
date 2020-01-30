@@ -1,11 +1,11 @@
 import * as actionTypes from '../actions/actionConstants';
 
-export default (state = {}, action) => {
+export default (state = null, action) => {
   switch (action.type) {
     case actionTypes.ADD_TOOLTIP_CONTENT:
-      return {...state, ...action.payload};
+      return { ...state, ...action.payload };
     case actionTypes.CLEAR_TOOLTIP:
-      return {};
+      return null;
     default:
       return state;
   }
