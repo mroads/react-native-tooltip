@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { store } from './Tooltip';
 import { clearTooltip } from '../actions/actions';
 
@@ -51,4 +51,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Overlay);
+const ConnectedOverlay = connect(mapStateToProps)(Overlay);
+
+
+export default () => (
+  <Provider store={store}>
+    <ConnectedOverlay />
+  </Provider>
+);
