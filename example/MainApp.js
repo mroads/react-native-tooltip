@@ -1,22 +1,18 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import {Overlay, Tooltip} from 'react-native-tooltip-mroads';
 import infoImage from './assets/information.png';
 
 const styles = StyleSheet.create({
   outerContainer: {
-    flexDirection: 'row',
     width: '100%',
-    height: '100%',
-  },
-  container: {
-    width: '50%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  container2: {
-    width: '50%',
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -26,8 +22,8 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    width:400,
-    height:200
+    width: 400,
+    height: 180,
   },
   textInputContainer: {
     borderWidth: 1,
@@ -47,18 +43,41 @@ const styles = StyleSheet.create({
     fontSize: 24,
     padding: 30,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   iconText: {
-    width: 150,
-    height:200,
-    backgroundColor: 'black'
+    width: 250,
+    height: 120,
+    backgroundColor: 'black',
   },
   imageStyle: {
-    width: 100,
-    height: 100,
+    width: 50,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  text: {
+    fontSize: 26,
+    color: '#AD0028',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  iconTooltipContainer: {
+    position: 'absolute',
+    right: 10,
+  },
+  country: {
+    width: 350,
+    height: 70,
+    backgroundColor: 'black',
+    borderWidth: 0.8,
+    borderColor: 'white',
+    borderRadius: 10,
+  },
+  countryText: {
+    color: '#FFFFFF',
+    fontSize: 26,
+    padding: 20,
   },
 });
 
@@ -73,9 +92,9 @@ class MainApp extends React.Component {
 
   renderCountry = ({item}) => (
     <TouchableOpacity
-      style={{width: 350, height: 70, backgroundColor: 'black'}}
+      style={styles.country}
       onPress={() => this.setSelectedCountry(item)}>
-      <Text style={{color: '#FFFFFF', fontSize: 26, padding: 20}}>{item}</Text>
+      <Text style={styles.countryText}>{item}</Text>
     </TouchableOpacity>
   );
 
@@ -99,31 +118,43 @@ class MainApp extends React.Component {
 
   renderIconTooltip = () => {
     return (
-        <View style={styles.iconText}>
-            <Text style={styles.iconContainer}>Find the relevant information here</Text>
-        </View>
-    )
+      <View style={styles.iconText}>
+        <Text style={styles.iconContainer}>
+          Find the relevant information here
+        </Text>
+      </View>
+    );
   };
 
   render() {
     const {selectedCountry} = this.state;
     return (
-        <View style={styles.outerContainer}>
-            <Overlay />
-            <View style={styles.container2}>
+      <View style={styles.outerContainer}>
+        <Overlay />
+        <Text style={styles.text}>
+          Click on the info icon to see the tooltip
+        </Text>
+        <Text style={[styles.text, {color: 'green'}]}>
+          Select the country by clicking on the text box
+        </Text>
+        <View style={styles.container}>
+          <Tooltip content={this.renderCountryTooltip()}>
+            <View style={styles.textInputContainer}>
+              <Text style={styles.textInput}>{selectedCountry}</Text>
+              <View style={styles.iconTooltipContainer}>
                 <Tooltip content={this.renderIconTooltip()} direction="right">
-                    <View>
-                        <Image source={infoImage} style={styles.imageStyle} resizeMode="contain" />
-                    </View>
+                  <View>
+                    <Image
+                      source={infoImage}
+                      style={styles.imageStyle}
+                      resizeMode="contain"
+                    />
+                  </View>
                 </Tooltip>
+              </View>
             </View>
-            <View style={styles.container}>
-                <Tooltip content={this.renderCountryTooltip()}>
-                    <View style={styles.textInputContainer}>
-                        <Text style={styles.textInput}>{selectedCountry}</Text>
-                    </View>
-                </Tooltip>
-            </View>
+          </Tooltip>
+        </View>
       </View>
     );
   }
