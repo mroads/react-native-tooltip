@@ -13,12 +13,7 @@ const styles = StyleSheet.create({
     height: '100%',
     position: 'absolute',
     zIndex: 2,
-  },
-  innerContainer: {
-    width: 100,
-    height: 100,
-    backgroundColor: 'red',
-  },
+  }
 });
 
 export interface Props {
