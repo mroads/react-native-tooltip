@@ -42,7 +42,7 @@ class Tooltip extends React.Component<Props> {
   setCoordinates = () => {
     const { content, direction } = this.props;
     if (this.contentRef) {
-      this.contentRef.measureInWindow((x, y, w, h) => {
+      this.contentRef.measure((_x,_y, w, h,x,y) => {
         console.log(x, y, w, h);
         if (direction === 'top') {
           dispatchAddToolTip(content, x, y - h - 10);
