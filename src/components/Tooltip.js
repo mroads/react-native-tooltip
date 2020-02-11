@@ -43,7 +43,6 @@ class Tooltip extends React.Component<Props> {
     const { content, direction } = this.props;
     if (this.contentRef) {
       this.contentRef.measure((_x,_y, w, h,x,y) => {
-        console.log(x, y, w, h);
         if (direction === 'top') {
           dispatchAddToolTip(content, x, y - h - 10);
         } else if (direction === 'left') {
