@@ -92,4 +92,4 @@ export default MainApp;
 
 ```
 
-The above example illustrates the usage of Tooltips. The overlay has to be placed at the top level in the application or in the root navigator. The view to be rendered by default is passed as children to Tooltip component. On clicking the icon or text input, an overlay is created which shows the tool tip (content passed to the Tooltip component) either on the right or bottom of the of the element (based on the direction passed to the Tooltip component).
+The above example illustrates the usage of Tooltips. The overlay has to be placed at the top level in the application or in the root navigator. The view to be rendered by default is passed as children to Tooltip component. On clicking the icon or text input, an overlay is created which shows the tool tip (content passed to the Tooltip component) either on the right or bottom of the element (based on the direction passed to the Tooltip component).
