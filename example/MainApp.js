@@ -137,7 +137,7 @@ class MainApp extends React.Component {
         <Text style={[styles.text, {color: 'green'}]}>
           Select the country by clicking on the text box
         </Text>
-        <View style={styles.container}>
+        <View style={styles.toolTipContainer}>
           <Tooltip content={this.renderCountryTooltip()}>
             <View style={styles.textInputContainer}>
               <Text style={styles.textInput}>{selectedCountry}</Text>
